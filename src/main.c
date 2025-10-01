@@ -160,10 +160,15 @@ void free_maze() {
 }
 
 
-int main() {
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        fprintf(stderr, "Usage: %s <maze_file>\n", argv[0]);
+        exit(1);
+    }
+
     init_display();
 
-    get_maze("../data/maze.txt");
+    get_maze(argv[1]);
     init_visited();
 
     printf("\nORIGINAL PATH\n");
